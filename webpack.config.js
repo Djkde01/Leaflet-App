@@ -22,6 +22,7 @@ module.exports = {
       '@pages': path.resolve(__dirname, 'src/pages'),
       '@styles': path.resolve(__dirname, 'src/styles'),
       '@routes': path.resolve(__dirname, 'src/routes'),
+      '@assets': path.resolve(__dirname, 'src/assets'),
 		},
   },
   module: {
@@ -68,6 +69,17 @@ module.exports = {
             loader: 'file-loader',
             options: { name: 'assets/[hash].[ext]' },
           }
+        ],
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'svg-url-loader',
+            options: {
+              limit: 10000,
+            },
+          },
         ],
       },
     ],
